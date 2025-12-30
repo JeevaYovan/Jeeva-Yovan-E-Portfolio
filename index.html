@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeeva Yovan E - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            /* Professional Palette: Deep Slate & Gold */
+            --primary: #0f172a;
+            /* Deep Slate Blue - Text & Headers */
+            --primary-light: #334155;
+            /* Lighter Slate - Secondary Text */
+            --accent: #d97706;
+            /* Gold/Amber - Highlights */
+            --accent-glow: rgba(217, 119, 6, 0.4);
+            --bg-body: #f1f5f9;
+            /* Light Gray Background */
+            --bg-card: #ffffff;
+            /* White Card Background */
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition-speed: 0.3s;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            .container {
+                box-shadow: none !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+            }
+
+            .header::before {
+                display: none;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-light);
+            background: var(--bg-body);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            box-shadow: var(--card-shadow);
+            border-radius: 8px;
+            /* Subtle rounding */
+            overflow: hidden;
+            /* For header radius */
+        }
+
+        /* Interactive Download Buttons via Fixed UI */
+        .download-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 12px;
+        }
+
+        .download-buttons button {
+            background: var(--primary);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-speed) ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .download-buttons button:hover {
+            transform: translateY(-2px);
+            background: var(--accent);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Header Section */
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+            color: white;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #cbd5e1;
+            /* Light Slate */
+            margin-bottom: 24px;
+            border-left: 3px solid var(--accent);
+            padding-left: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #cbd5e1;
+            transition: color 0.2s;
+        }
+
+        .contact-item:hover {
+            color: var(--accent);
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .contact-item a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        .content {
+            padding: 48px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .summary {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--primary-light);
+            text-align: justify;
+        }
+
+        /* Interactive Cards */
+        .card-hover {
+            transition: all var(--transition-speed) ease;
+            border-radius: 8px;
+            padding: 16px;
+            margin: -16px;
+            /* Offset padding to keep alignment */
+            margin-bottom: 16px;
+            /* Restore margin */
+            border: 1px solid transparent;
+            position: relative;
+            background: transparent;
+        }
+
+        .card-hover:hover {
+            background: white;
+            transform: translateY(-4px);
+            box-shadow: var(--card-hover-shadow);
+            border-color: #f1f5f9;
+            z-index: 10;
+        }
+
+        /* Experience Items */
+        .experience-item {
+            margin-bottom: 32px;
+            position: relative;
+            padding-left: 24px;
+            border-left: 2px solid #e2e8f0;
+            margin-left: 16px;
+            /* Indent for timeline */
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 20px;
+            /* Align with title */
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 2px solid var(--primary-light);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .experience-item:hover::before {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+
+        .job-header {
+            margin-bottom: 12px;
+        }
+
+        .job-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .company-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .company {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .date {
+            color: var(--primary-light);
+            font-size: 13px;
+            font-weight: 500;
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .location {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .subsection-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 16px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--primary-light);
+        }
+
+        li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Key Achievements */
+        .key-achievements {
+            background: #fffbeb;
+            /* Very light amber */
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid #fcd34d;
+            margin-bottom: 32px;
+        }
+
+        .key-achievements h3 {
+            color: #92400e;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-icon {
+            font-size: 18px;
+        }
+
+        .achievement-text {
+            font-size: 13px;
+            color: #78350f;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 3px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            background: white;
+            box-shadow: var(--card-shadow);
+        }
+
+        .skill-label {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 13px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        .skill-items {
+            color: var(--primary-light);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .education-item {
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        /* Spotlight Effect JS Class target */
+        .spotlight {
+            position: fixed;
+            pointer-events: none;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(29, 78, 216, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        body:hover .spotlight {
+            opacity: 1;
+        }
+
+        @page {
+            margin: 0.5in;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="spotlight"></div>
+    <div class="download-buttons no-print">
+        <button onclick="downloadPDF()">📄 Download PDF</button>
+        <button onclick="downloadWord()">📝 Download Word</button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Jeeva Yovan E</h1>
+            <div class="subtitle">Infrastructure Lead Engineer | AWS & Kubernetes Expert | DevOps & SRE Specialist</div>
+            <div class="contact-info">
+                <div class="contact-item">📧 <a href="mailto:jeevayovan24@gmail.com">jeevayovan24@gmail.com</a></div>
+                <div class="contact-item">📱 6382597321</div>
+                <div class="contact-item">💼 <a href="https://linkedin.com/in/jeevayovan"
+                        target="_blank">linkedin.com/in/jeevayovan</a></div>
+                <div class="contact-item">📍 Salem, Tamil Nadu, India</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>Professional Summary</h2>
+                <div class="summary">
+                    Infrastructure Lead Engineer and DevOps Consultant with nearly 3 years of expertise in designing and
+                    implementing scalable, secure, and cost-effective cloud infrastructure on AWS, Hetzner Cloud, and
+                    Azure. Specialized in modernizing infrastructure, automating deployments, and establishing
+                    comprehensive observability practices that ensure system reliability and team productivity. Proven
+                    track record of achieving 75% cost reduction through strategic cloud migration and maintaining 99.9%
+                    uptime for mission-critical platforms. Expert in SRE principles, GitOps workflows, and DevSecOps
+                    integration with 24/7 on-call support experience.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Key Achievements</h2>
+                <div class="key-achievements">
+                    <div class="achievement-grid">
+                        <div class="achievement-item card-hover">
+                            <div class="achievement-icon">💰</div>
+                            <div class="achievement-text">Achieved 75% cost reduction through strategic cloud migration
+                            </div>
+                        </div>
+                        <div class="achievement-item card-hover">
+                            <div class="achievement-icon">⚡</div>
+                            <div class="achievement-text">Improved deployment frequency by 50% with GitOps workflows
+                            </div>
+                        </div>
+                        <div class="achievement-item card-hover">
+                            <div class="achievement-icon">🎯</div>
+                            <div class="achievement-text">Maintained 99.9% uptime for mission-critical retail platforms
+                            </div>
+                        </div>
+                        <div class="achievement-item card-hover">
+                            <div class="achievement-icon">📊</div>
+                            <div class="achievement-text">Reduced MTTA by 40% with Grafana OnCall integration</div>
+                        </div>
+                        <div class="achievement-item card-hover">
+                            <div class="achievement-icon">🔧</div>
+                            <div class="achievement-text">Reduced MTTR by 20% through effective incident management
+                            </div>
+                        </div>
+                        <div class="achievement-item card-hover">
+                            <div class="achievement-icon">🛡️</div>
+                            <div class="achievement-text">Zero major outages across thousands of retail stores</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Professional Experience</h2>
+
+                <div class="experience-item card-hover">
+                    <div class="job-header">
+                        <div class="job-title">Infrastructure & DevOps Engineer</div>
+                        <div class="company-info">
+                            <div class="company">Zuberà</div>
+                            <div class="date">Mar 2025 - Present</div>
+                        </div>
+                        <div class="location">Remote, Salem, Tamil Nadu</div>
+                    </div>
+
+                    <div class="subsection-title">Infrastructure Modernization</div>
+                    <ul>
+                        <li>Architected and deployed end-to-end UAT environment on AWS using EKS, CloudFront, ALB, and
+                            WAF with Infrastructure as Code (Terraform)</li>
+                        <li>Achieved 75% cost reduction by strategically migrating development and QA workloads from AWS
+                            to Hetzner Cloud while maintaining operational uptime</li>
+                        <li>Authored Helm charts, Dockerfiles, and Kubernetes manifests for microservices deployment
+                            across isolated namespaces</li>
+                    </ul>
+
+                    <div class="subsection-title">Observability & Monitoring Excellence</div>
+                    <ul>
+                        <li>Deployed comprehensive observability stack including Prometheus, Grafana, Loki, and Jaeger
+                            across microservices architecture</li>
+                        <li>Enhanced observability framework by integrating AlertManager with Prometheus alert rules for
+                            intelligent incident routing and reduced alert fatigue</li>
+                        <li>Implemented Sentry for real-time error tracking and application performance monitoring with
+                            automatic issue grouping</li>
+                        <li>Established synthetic monitoring using Blackbox Exporter for proactive service availability
+                            detection and uptime validation</li>
+                        <li>Integrated Grafana OnCall for incident management, reducing mean time to acknowledge (MTTA)
+                            by 40%</li>
+                        <li>Designed RCA (Root Cause Analysis) dashboards in Grafana for faster incident resolution and
+                            post-mortem analysis</li>
+                        <li>Integrated Istio Ambient service mesh for secure traffic control, enhanced observability,
+                            and distributed tracing capabilities</li>
+                        <li>Established SLI/SLO-based monitoring with OpenSearch dashboards for error tracking and
+                            alerting from Kubernetes pods</li>
+                    </ul>
+
+                    <div class="subsection-title">CI/CD & Automation</div>
+                    <ul>
+                        <li>Transformed deployment pipeline by migrating from GitHub/Jenkins to OneDev, implementing
+                            ArgoCD for GitOps workflows</li>
+                        <li>Improved deployment frequency by 50% and reduced resource utilization by 20% through
+                            automated CI/CD pipelines with ArgoCD on K3s clusters</li>
+                        <li>Implemented Argo Rollouts with Istio for canary releases in production, integrating
+                            Prometheus and Kiali for monitoring and traffic visualization</li>
+                        <li>Authored build spec YAML files for OneDev, automating deployments by updating image tags in
+                            Helm values.yml</li>
+                    </ul>
+
+                    <div class="subsection-title">Security & Compliance</div>
+                    <ul>
+                        <li>Integrated DevSecOps tools (SonarQube, OWASP ZAP, Trivy) into CI/CD pipelines, collaborating
+                            with security teams on vulnerability remediation</li>
+                        <li>Implemented automated certificate lifecycle management using Let's Encrypt, eliminating
+                            manual renewal processes</li>
+                        <li>Configured Nginx and Caddy as reverse proxy, caching server, and SSL terminator for
+                            optimized performance</li>
+                        <li>Managed DNS via Route53 and GoDaddy with comprehensive SSL certificate management and
+                            automated renewals</li>
+                    </ul>
+
+                    <div class="subsection-title">Testing & Validation</div>
+                    <ul>
+                        <li>Conducted chaos engineering tests including end-to-end validation and load testing to ensure
+                            system resilience under failure scenarios</li>
+                        <li>Performed stress testing and failure scenario simulations to validate infrastructure
+                            robustness and auto-recovery capabilities</li>
+                    </ul>
+
+                    <div class="subsection-title">Operations & Leadership</div>
+                    <ul>
+                        <li>Provide 24/7 on-call support with rapid response to critical incidents, conducting thorough
+                            root cause analysis and implementing preventive measures</li>
+                        <li>Led cross-functional collaboration across development, security, and operations teams to
+                            deliver applications with zero major incidents</li>
+                        <li>Acted as primary point of contact during major incidents, resolving issues within SLAs using
+                            Plane.so ticketing system</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item card-hover">
+                    <div class="job-header">
+                        <div class="job-title">Cloud & DevOps Engineer (SRE)</div>
+                        <div class="company-info">
+                            <div class="company">zeb</div>
+                            <div class="date">Feb 2024 - Oct 2024</div>
+                        </div>
+                        <div class="location">On-site, Chennai, Tamil Nadu</div>
+                    </div>
+
+                    <div class="subsection-title">Mission-Critical Operations</div>
+                    <ul>
+                        <li>Managed AWS-based production infrastructure supporting thousands of retail stores globally,
+                            maintaining 99.9% availability SLA with zero major outages</li>
+                        <li>Executed ITIL-compliant change management processes across dev, qa, uat, perf, and prod
+                            environments, ensuring smooth releases and minimal disruption</li>
+                    </ul>
+
+                    <div class="subsection-title">Incident Management & Support</div>
+                    <ul>
+                        <li>Provided 24/7 on-call support with sub-15-minute response time for P1 incidents using
+                            distributed tracing and correlation IDs</li>
+                        <li>Resolved 90% of service tickets within SLA using ServiceNow and Jira, implementing long-term
+                            fixes to prevent recurring issues</li>
+                        <li>Reduced mean time to resolution (MTTR) by 20% through effective problem-solving and
+                            implementation of automated remediation scripts</li>
+                    </ul>
+
+                    <div class="subsection-title">System Migration & Modernization</div>
+                    <ul>
+                        <li>Contributed to large-scale migration from legacy systems to modern serverless architecture
+                            with zero downtime, successfully onboarding thousands of retail stores</li>
+                        <li>Supported CI/CD pipeline migration from Jenkins to GitLab, improving deployment efficiency
+                            and reducing manual intervention by 60%</li>
+                    </ul>
+
+                    <div class="subsection-title">Observability & Optimization</div>
+                    <ul>
+                        <li>Implemented comprehensive monitoring strategy using CloudWatch, Datadog, and Logz.io,
+                            enabling proactive incident response and system optimization</li>
+                        <li>Optimized AWS Lambda-based applications and implemented automated capacity planning,
+                            reducing cold start times by 40%</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item card-hover">
+                    <div class="job-header">
+                        <div class="job-title">Cloud Engineer (DevSecOps Specialist)</div>
+                        <div class="company-info">
+                            <div class="company">AVASOFT</div>
+                            <div class="date">Feb 2023 - Jan 2024</div>
+                        </div>
+                        <div class="location">On-site, Chennai, Tamil Nadu</div>
+                    </div>
+
+                    <ul>
+                        <li>Led 3-member DevSecOps team implementing security measures across internal NextGen products
+                        </li>
+                        <li>Developed security frameworks that reduced manual security assessment time by 60%, creating
+                            actionable remediation strategies aligned with compliance standards</li>
+                        <li>Integrated security scanning tools (SonarQube, Trivy, OWASP, Terrascan, ZapProxy) into CI/CD
+                            pipelines, automating vulnerability detection</li>
+                        <li>Established vulnerability management processes and automated security reporting,
+                            collaborating with cybersecurity teams for compliance alignment</li>
+                        <li>Conducted comprehensive research and POC development for Google Cloud Platform services,
+                            creating detailed documentation for organizational cloud adoption</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section page-break">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <div class="degree">Bachelor of Engineering in Electronics and Communication Engineering (ECE)</div>
+                    <div class="school">Dhirajlal Gandhi College of Technology, Salem | Anna University Chennai</div>
+                    <div class="date">Aug 2019 - Jul 2023 | CGPA: 8.2/10</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Technical Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Cloud Platforms</div>
+                        <div class="skill-items">AWS (Expert), Hetzner Cloud, Azure, Google Cloud Platform</div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Infrastructure as Code</div>
+                        <div class="skill-items">Terraform, Ansible, AWS CloudFormation</div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Container & Orchestration</div>
+                        <div class="skill-items">Kubernetes, Docker, Helm Charts, K3s, AWS EKS, AWS ECS, Istio (Ambient
+                            Mode)</div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">CI/CD Tools</div>
+                        <div class="skill-items">GitLab, GitHub Actions, OneDev, Jenkins, ArgoCD, Argo Rollouts, Azure
+                            DevOps</div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Observability Stack</div>
+                        <div class="skill-items">Prometheus, Grafana, Loki, Jaeger, Kiali, AlertManager, Blackbox
+                            Exporter, Sentry</div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Monitoring Tools</div>
+                        <div class="skill-items">CloudWatch, Datadog, Logz.io, OpenSearch, Fluentd</div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Incident Management</div>
+                        <div class="skill-items">Grafana OnCall, ServiceNow, Jira, Plane.so</div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Security Tools</div>
+                        <div class="skill-items">SonarQube, Trivy, Terrascan, OWASP Dependency Check, OWASP ZapProxy
+                        </div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Networking</div>
+                        <div class="skill-items">TCP/IP, DNS, VPC Design & Troubleshooting, Load Balancing</div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Web Servers & Proxies</div>
+                        <div class="skill-items">Nginx, Caddy, Reverse Proxy Configuration</div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Methodologies</div>
+                        <div class="skill-items">ITIL Principles, Agile, DevOps, SRE (SLIs/SLOs), GitOps, Chaos
+                            Engineering</div>
+                    </div>
+
+                    <div class="skill-category card-hover">
+                        <div class="skill-label">Additional Skills</div>
+                        <div class="skill-items">Certificate Lifecycle Management, Cost Optimization, 24/7 On-Call
+                            Support, Bash Scripting</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Spotlight Effect
+        const spotlight = document.querySelector('.spotlight');
+        document.addEventListener('mousemove', (e) => {
+            spotlight.style.left = `${e.clientX}px`;
+            spotlight.style.top = `${e.clientY}px`;
+        });
+
+        function downloadPDF() {
+            const buttons = document.querySelector('.download-buttons');
+            buttons.style.display = 'none';
+
+            setTimeout(() => {
+                window.print();
+                setTimeout(() => {
+                    buttons.style.display = 'flex';
+                }, 100);
+            }, 100);
+        }
+
+        function downloadWord() {
+            const buttons = document.querySelector('.download-buttons');
+            buttons.style.display = 'none';
+
+            setTimeout(() => {
+                const content = `
+                    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                    <head><meta charset='utf-8'><title>Jeeva Yovan E Resume</title></head>
+                    <body>${document.querySelector('.container').innerHTML}</body>
+                    </html>
+                `;
+
+                const blob = new Blob(['\ufeff', content], {
+                    type: 'application/msword'
+                });
+
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'Jeeva_Yovan_E_Resume.doc';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+
+                setTimeout(() => {
+                    buttons.style.display = 'flex';
+                }, 100);
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>
