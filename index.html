@@ -1,827 +1,1453 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeeva Yovan E - Resume</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeeva Yovan E — Infrastructure & DevOps Engineer</title>
+  <meta name="description" content="Infrastructure Engineer, DevOps, Cloud, SRE & AIOps specialist with 3+ years building scalable multi-cloud platforms." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #070d1a;
+      --bg2:       #0d1628;
+      --bg3:       #111e35;
+      --card:      #0f1d33;
+      --border:    rgba(56,100,175,0.2);
+      --blue:      #3b82f6;
+      --blue-dim:  rgba(59,130,246,0.12);
+      --cyan:      #22d3ee;
+      --amber:     #f59e0b;
+      --amber-dim: rgba(245,158,11,0.12);
+      --green:     #10b981;
+      --green-dim: rgba(16,185,129,0.12);
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --dim:       #94a3b8;
+      --white:     #ffffff;
+      --font-head: 'Syne', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'DM Sans', sans-serif;
+    }
 
-        :root {
-            /* Professional Palette: Deep Slate & Gold */
-            --primary: #0f172a;
-            /* Deep Slate Blue - Text & Headers */
-            --primary-light: #334155;
-            /* Lighter Slate - Secondary Text */
-            --accent: #d97706;
-            /* Gold/Amber - Highlights */
-            --accent-glow: rgba(217, 119, 6, 0.4);
-            --bg-body: #f1f5f9;
-            /* Light Gray Background */
-            --bg-card: #ffffff;
-            /* White Card Background */
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --transition-speed: 0.3s;
-        }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-        @media print {
-            body {
-                margin: 0;
-                padding: 0;
-                background: white;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+    html { scroll-behavior: smooth; }
 
-            .no-print {
-                display: none !important;
-            }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-            .page-break {
-                page-break-before: always;
-            }
+    /* ── GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-            .container {
-                box-shadow: none !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-            }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(7,13,26,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
 
-            .header::before {
-                display: none;
-            }
-        }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--blue);
+      letter-spacing: 0.05em;
+    }
+    .nav-logo span { color: var(--amber); }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--primary-light);
-            background: var(--bg-body);
-            padding: 20px;
-        }
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--amber);
+      text-decoration: none;
+      border: 1px solid rgba(245,158,11,0.4);
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--amber-dim); }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            box-shadow: var(--card-shadow);
-            border-radius: 8px;
-            /* Subtle rounding */
-            overflow: hidden;
-            /* For header radius */
-        }
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 80px 60px;
+      position: relative;
+      overflow: hidden;
+    }
 
-        /* Interactive Download Buttons via Fixed UI */
-        .download-buttons {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 12px;
-        }
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute;
+      bottom: 10%;
+      left: -5%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245,158,11,0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
 
-        .download-buttons button {
-            background: var(--primary);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 12px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all var(--transition-speed) ease;
-            font-family: 'Inter', sans-serif;
-        }
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
 
-        .download-buttons button:hover {
-            transform: translateY(-2px);
-            background: var(--accent);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-        }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--green);
+      background: var(--green-dim);
+      border: 1px solid rgba(16,185,129,0.2);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+      letter-spacing: 0.08em;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.4; transform:scale(0.8); }
+    }
 
-        /* Header Section */
-        .header {
-            background: var(--primary);
-            color: white;
-            padding: 48px;
-            position: relative;
-            overflow: hidden;
-        }
+    .hero-name {
+      font-family: var(--font-head);
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 800;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .hero-name .accent { color: var(--blue); }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
+    .hero-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .role-pill {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--dim);
+      background: var(--blue-dim);
+    }
+    .role-pill.active {
+      color: var(--blue);
+      border-color: rgba(59,130,246,0.4);
+    }
 
-        h1 {
-            font-size: 42px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            letter-spacing: -1px;
-            color: white;
-        }
+    .hero-summary {
+      font-size: 17px;
+      color: var(--dim);
+      line-height: 1.8;
+      max-width: 680px;
+      margin-bottom: 40px;
+    }
+    .hero-summary strong { color: var(--text); font-weight: 500; }
 
-        .subtitle {
-            font-size: 18px;
-            font-weight: 400;
-            color: #cbd5e1;
-            /* Light Slate */
-            margin-bottom: 24px;
-            border-left: 3px solid var(--accent);
-            padding-left: 12px;
-        }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
 
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            font-size: 14px;
-        }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(59,130,246,0.3); }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #cbd5e1;
-            transition: color 0.2s;
-        }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--dim);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { color: var(--text); border-color: rgba(59,130,246,0.4); background: var(--blue-dim); }
 
-        .contact-item:hover {
-            color: var(--accent);
-        }
+    /* Stats row */
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--blue); }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
 
-        .contact-item a {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
-        }
+    /* ── SECTION COMMON ── */
+    section { position: relative; z-index: 1; }
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 100px 60px; }
 
-        .contact-item a:hover {
-            border-bottom-color: var(--accent);
-        }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 48px;
+      letter-spacing: -0.02em;
+    }
+    .section-title em {
+      font-style: normal;
+      color: var(--blue);
+    }
 
-        .content {
-            padding: 48px;
-        }
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--bg2); }
 
-        .section {
-            margin-bottom: 40px;
-        }
+    .exp-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-        .section:last-child {
-            margin-bottom: 0;
-        }
+    .exp-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 36px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--blue);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .exp-card:hover { border-color: rgba(59,130,246,0.35); transform: translateX(4px); }
+    .exp-card:hover::before { opacity: 1; }
+    .exp-card + .exp-card { margin-top: 16px; }
 
-        h2 {
-            color: var(--primary);
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e2e8f0;
-            position: relative;
-            letter-spacing: -0.5px;
-        }
+    .exp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .exp-title {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .exp-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--amber);
+      background: var(--amber-dim);
+      border: 1px solid rgba(245,158,11,0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .exp-badge.current { color: var(--green); background: var(--green-dim); border-color: rgba(16,185,129,0.2); }
+    .exp-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .exp-company {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--blue);
+      font-weight: 500;
+    }
+    .exp-dot { width: 4px; height: 4px; background: var(--muted); border-radius: 50%; }
+    .exp-date { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+    .exp-loc { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: var(--accent);
-        }
+    .exp-subsection {
+      margin-bottom: 20px;
+    }
+    .exp-sub-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--amber);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(245,158,11,0.15);
+    }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: 14px;
+      color: var(--dim);
+      padding: 4px 0 4px 20px;
+      position: relative;
+      line-height: 1.7;
+    }
+    .exp-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-size: 12px;
+    }
+    .exp-bullets li strong { color: var(--text); font-weight: 500; }
 
-        .summary {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--primary-light);
-            text-align: justify;
-        }
+    /* ── SKILLS ── */
+    #skills { background: var(--bg); }
 
-        /* Interactive Cards */
-        .card-hover {
-            transition: all var(--transition-speed) ease;
-            border-radius: 8px;
-            padding: 16px;
-            margin: -16px;
-            /* Offset padding to keep alignment */
-            margin-bottom: 16px;
-            /* Restore margin */
-            border: 1px solid transparent;
-            position: relative;
-            background: transparent;
-        }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
 
-        .card-hover:hover {
-            background: white;
-            transform: translateY(-4px);
-            box-shadow: var(--card-hover-shadow);
-            border-color: #f1f5f9;
-            z-index: 10;
-        }
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      transition: all 0.25s;
+    }
+    .skill-card:hover {
+      border-color: rgba(59,130,246,0.35);
+      background: var(--bg3);
+      transform: translateY(-3px);
+    }
+    .skill-cat {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--dim);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    .skill-tag.highlight {
+      color: var(--cyan);
+      border-color: rgba(34,211,238,0.25);
+      background: rgba(34,211,238,0.05);
+    }
+    .skill-tag.ai {
+      color: var(--amber);
+      border-color: rgba(245,158,11,0.25);
+      background: var(--amber-dim);
+    }
 
-        /* Experience Items */
-        .experience-item {
-            margin-bottom: 32px;
-            position: relative;
-            padding-left: 24px;
-            border-left: 2px solid #e2e8f0;
-            margin-left: 16px;
-            /* Indent for timeline */
-        }
+    /* ── PROJECTS ── */
+    #projects { background: var(--bg2); }
 
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -7px;
-            top: 20px;
-            /* Align with title */
-            width: 12px;
-            height: 12px;
-            background: white;
-            border: 2px solid var(--primary-light);
-            border-radius: 50%;
-            transition: all 0.3s;
-        }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+      gap: 20px;
+    }
 
-        .experience-item:hover::before {
-            background: var(--accent);
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px var(--accent-glow);
-        }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 30px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle at top right, rgba(59,130,246,0.07), transparent 70%);
+      pointer-events: none;
+    }
+    .project-card:hover { border-color: rgba(59,130,246,0.4); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
-        .job-header {
-            margin-bottom: 12px;
-        }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .project-icon {
+      width: 40px; height: 40px;
+      background: var(--blue-dim);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .project-period {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .project-title {
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .project-subtitle {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--blue);
+      margin-bottom: 14px;
+      letter-spacing: 0.05em;
+    }
+    .project-desc {
+      font-size: 13px;
+      color: var(--dim);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .project-desc strong { color: var(--text); font-weight: 500; }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
 
-        .job-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
+    /* ── AIOPS PLATFORM SPECIAL ── */
+    .project-card.featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--card) 0%, rgba(59,130,246,0.06) 100%);
+      border-color: rgba(59,130,246,0.3);
+    }
+    .project-card.featured .project-title { font-size: 22px; }
 
-        .company-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
+    .aiops-modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .module-group {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+    }
+    .module-group-title {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+    .module-items {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
 
-        .company {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 15px;
-        }
+    /* ── ACHIEVEMENTS ── */
+    #achievements { background: var(--bg); }
 
-        .date {
-            color: var(--primary-light);
-            font-size: 13px;
-            font-weight: 500;
-            background: #f1f5f9;
-            padding: 4px 12px;
-            border-radius: 20px;
-        }
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
 
-        .location {
-            color: #94a3b8;
-            font-size: 13px;
-        }
+    .ach-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .ach-card:hover { border-color: rgba(59,130,246,0.4); transform: translateY(-4px); }
 
-        .subsection-title {
-            font-weight: 600;
-            color: var(--primary);
-            margin-top: 16px;
-            margin-bottom: 8px;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    .ach-num {
+      font-family: var(--font-head);
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .ach-num.amber { color: var(--amber); }
+    .ach-num.green { color: var(--green); }
+    .ach-num.cyan  { color: var(--cyan); }
 
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
+    .ach-label {
+      font-size: 14px;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+    .ach-label strong { display: block; color: var(--text); font-size: 15px; margin-bottom: 2px; }
 
-        li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: var(--primary-light);
-        }
+    /* ── EDUCATION ── */
+    #education { background: var(--bg2); }
 
-        li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 700;
-        }
+    .edu-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 36px;
+      max-width: 700px;
+    }
+    .edu-icon {
+      width: 56px; height: 56px;
+      background: var(--amber-dim);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .edu-degree {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .edu-school {
+      font-size: 14px;
+      color: var(--dim);
+      margin-bottom: 8px;
+    }
+    .edu-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .edu-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--amber);
+      background: var(--amber-dim);
+      border: 1px solid rgba(245,158,11,0.2);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
 
-        /* Key Achievements */
-        .key-achievements {
-            background: #fffbeb;
-            /* Very light amber */
-            padding: 24px;
-            border-radius: 8px;
-            border: 1px solid #fcd34d;
-            margin-bottom: 32px;
-        }
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
 
-        .key-achievements h3 {
-            color: #92400e;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
 
-        .achievement-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
-        }
+    .contact-text .section-title { margin-bottom: 16px; }
+    .contact-text p { font-size: 15px; color: var(--dim); line-height: 1.8; margin-bottom: 32px; }
 
-        .achievement-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px;
-            background: white;
-            border-radius: 6px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: rgba(59,130,246,0.4); transform: translateX(4px); }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      background: var(--blue-dim);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .contact-link-text strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+    }
+    .contact-link-text span {
+      font-size: 14px;
+      color: var(--text);
+    }
 
-        .achievement-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+    /* ── TERMINAL CARD ── */
+    .terminal {
+      background: #0a0f1a;
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .terminal-bar {
+      background: #111827;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(59,130,246,0.1);
+    }
+    .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .t-dot.r { background: #ef4444; }
+    .t-dot.y { background: #f59e0b; }
+    .t-dot.g { background: #10b981; }
+    .terminal-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+    .terminal-body {
+      padding: 24px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 2;
+    }
+    .t-prompt { color: var(--green); }
+    .t-cmd { color: var(--text); }
+    .t-output { color: var(--dim); padding-left: 20px; }
+    .t-key { color: var(--blue); }
+    .t-val { color: var(--amber); }
+    .t-cursor {
+      display: inline-block;
+      width: 8px; height: 14px;
+      background: var(--blue);
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
 
-        .achievement-icon {
-            font-size: 18px;
-        }
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 24px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer p { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+    footer span { color: var(--blue); }
 
-        .achievement-text {
-            font-size: 13px;
-            color: #78350f;
-            font-weight: 500;
-            line-height: 1.5;
-        }
+    /* ── DIVIDER ── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
-        /* Skills */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
+    /* ── SCROLL FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        .skill-category {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            border-top: 3px solid var(--primary);
-            transition: transform 0.3s;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-4px);
-            background: white;
-            box-shadow: var(--card-shadow);
-        }
-
-        .skill-label {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 13px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 8px;
-        }
-
-        .skill-items {
-            color: var(--primary-light);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .education-item {
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-        }
-
-        /* Spotlight Effect JS Class target */
-        .spotlight {
-            position: fixed;
-            pointer-events: none;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(29, 78, 216, 0.05) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        body:hover .spotlight {
-            opacity: 1;
-        }
-
-        @page {
-            margin: 0.5in;
-        }
-    </style>
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      #hero { padding: 90px 24px 48px; }
+      .section-inner { padding: 64px 24px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: auto; }
+      footer { padding: 20px 24px; flex-direction: column; text-align: center; }
+      .hero-stats { gap: 24px; }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="spotlight"></div>
-    <div class="download-buttons no-print">
-        <button onclick="downloadPDF()">📄 Download PDF</button>
-        <button onclick="downloadWord()">📝 Download Word</button>
-    </div>
 
-    <div class="container">
-        <div class="header">
-            <h1>Jeeva Yovan E</h1>
-            <div class="subtitle">Infrastructure Lead Engineer | AWS & Kubernetes Expert | DevOps & SRE Specialist</div>
-            <div class="contact-info">
-                <div class="contact-item">📧 <a href="mailto:jeevayovan24@gmail.com">jeevayovan24@gmail.com</a></div>
-                <div class="contact-item">📱 6382597321</div>
-                <div class="contact-item">💼 <a href="https://linkedin.com/in/jeevayovan"
-                        target="_blank">linkedin.com/in/jeevayovan</a></div>
-                <div class="contact-item">📍 Salem, Tamil Nadu, India</div>
-            </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">jeeva<span>.</span>yovan<span>()</span></div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Impact</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:jeevayovan24@gmail.com">Hire Me →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content fade-in">
+    <div class="hero-tag">Available for new opportunities</div>
+    <h1 class="hero-name">Jeeva<br/><span class="accent">Yovan E</span></h1>
+    <div class="hero-roles">
+      <span class="role-pill active">Infrastructure</span>
+      <span class="role-pill active">DevOps</span>
+      <span class="role-pill active">Cloud</span>
+      <span class="role-pill active">SRE</span>
+      <span class="role-pill active">AIOps</span>
+      <span class="role-pill">Platform Engineering</span>
+      <span class="role-pill">DevSecOps</span>
+    </div>
+    <p class="hero-summary">
+      Infrastructure & DevOps Engineer with <strong>3+ years</strong> designing secure, scalable
+      <strong>multi-cloud platforms</strong> on AWS, Hetzner, GCP & Azure.
+      Expert in <strong>Kubernetes, GitOps, SRE, and AI-native infrastructure</strong>.
+      Currently building a full-stack <strong>AIOps monitoring platform</strong> from scratch
+      across 50+ microservices — and bridging infra with AI-assisted full-stack development.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="mailto:jeevayovan24@gmail.com">✉ Get In Touch</a>
+      <a class="btn-secondary" href="https://linkedin.com/in/jeevayovan-infrastructure" target="_blank">↗ LinkedIn</a>
+      <a class="btn-secondary" href="https://github.com/jeevayovan" target="_blank">⌥ GitHub</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">3<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">75<span>%</span></div>
+        <div class="stat-label">Cloud Cost Reduction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">Microservices Managed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">99.9<span>%</span></div>
+        <div class="stat-label">Uptime SLA Maintained</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">// work history</div>
+    <h2 class="section-title">Professional <em>Experience</em></h2>
+
+    <div class="exp-grid">
+
+      <!-- Zubera -->
+      <div class="exp-card fade-in">
+        <div class="exp-top">
+          <div class="exp-title">Infrastructure & DevOps Engineer</div>
+          <div class="exp-badge current">● Current</div>
+        </div>
+        <div class="exp-meta">
+          <span class="exp-company">Zubera</span>
+          <div class="exp-dot"></div>
+          <span class="exp-date">Mar 2025 – Present</span>
+          <div class="exp-dot"></div>
+          <span class="exp-loc">Remote</span>
         </div>
 
-        <div class="content">
-            <div class="section">
-                <h2>Professional Summary</h2>
-                <div class="summary">
-                    Infrastructure Lead Engineer and DevOps Consultant with nearly 3 years of expertise in designing and
-                    implementing scalable, secure, and cost-effective cloud infrastructure on AWS, Hetzner Cloud, and
-                    Azure. Specialized in modernizing infrastructure, automating deployments, and establishing
-                    comprehensive observability practices that ensure system reliability and team productivity. Proven
-                    track record of achieving 75% cost reduction through strategic cloud migration and maintaining 99.9%
-                    uptime for mission-critical platforms. Expert in SRE principles, GitOps workflows, and DevSecOps
-                    integration with 24/7 on-call support experience.
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Key Achievements</h2>
-                <div class="key-achievements">
-                    <div class="achievement-grid">
-                        <div class="achievement-item card-hover">
-                            <div class="achievement-icon">💰</div>
-                            <div class="achievement-text">Achieved 75% cost reduction through strategic cloud migration
-                            </div>
-                        </div>
-                        <div class="achievement-item card-hover">
-                            <div class="achievement-icon">⚡</div>
-                            <div class="achievement-text">Improved deployment frequency by 50% with GitOps workflows
-                            </div>
-                        </div>
-                        <div class="achievement-item card-hover">
-                            <div class="achievement-icon">🎯</div>
-                            <div class="achievement-text">Maintained 99.9% uptime for mission-critical retail platforms
-                            </div>
-                        </div>
-                        <div class="achievement-item card-hover">
-                            <div class="achievement-icon">📊</div>
-                            <div class="achievement-text">Reduced MTTA by 40% with Grafana OnCall integration</div>
-                        </div>
-                        <div class="achievement-item card-hover">
-                            <div class="achievement-icon">🔧</div>
-                            <div class="achievement-text">Reduced MTTR by 20% through effective incident management
-                            </div>
-                        </div>
-                        <div class="achievement-item card-hover">
-                            <div class="achievement-icon">🛡️</div>
-                            <div class="achievement-text">Zero major outages across thousands of retail stores</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Professional Experience</h2>
-
-                <div class="experience-item card-hover">
-                    <div class="job-header">
-                        <div class="job-title">Infrastructure & DevOps Engineer</div>
-                        <div class="company-info">
-                            <div class="company">Zuberà</div>
-                            <div class="date">Mar 2025 - Present</div>
-                        </div>
-                        <div class="location">Remote, Salem, Tamil Nadu</div>
-                    </div>
-
-                    <div class="subsection-title">Infrastructure Modernization</div>
-                    <ul>
-                        <li>Architected and deployed end-to-end UAT environment on AWS using EKS, CloudFront, ALB, and
-                            WAF with Infrastructure as Code (Terraform)</li>
-                        <li>Achieved 75% cost reduction by strategically migrating development and QA workloads from AWS
-                            to Hetzner Cloud while maintaining operational uptime</li>
-                        <li>Authored Helm charts, Dockerfiles, and Kubernetes manifests for microservices deployment
-                            across isolated namespaces</li>
-                    </ul>
-
-                    <div class="subsection-title">Observability & Monitoring Excellence</div>
-                    <ul>
-                        <li>Deployed comprehensive observability stack including Prometheus, Grafana, Loki, and Jaeger
-                            across microservices architecture</li>
-                        <li>Enhanced observability framework by integrating AlertManager with Prometheus alert rules for
-                            intelligent incident routing and reduced alert fatigue</li>
-                        <li>Implemented Sentry for real-time error tracking and application performance monitoring with
-                            automatic issue grouping</li>
-                        <li>Established synthetic monitoring using Blackbox Exporter for proactive service availability
-                            detection and uptime validation</li>
-                        <li>Integrated Grafana OnCall for incident management, reducing mean time to acknowledge (MTTA)
-                            by 40%</li>
-                        <li>Designed RCA (Root Cause Analysis) dashboards in Grafana for faster incident resolution and
-                            post-mortem analysis</li>
-                        <li>Integrated Istio Ambient service mesh for secure traffic control, enhanced observability,
-                            and distributed tracing capabilities</li>
-                        <li>Established SLI/SLO-based monitoring with OpenSearch dashboards for error tracking and
-                            alerting from Kubernetes pods</li>
-                    </ul>
-
-                    <div class="subsection-title">CI/CD & Automation</div>
-                    <ul>
-                        <li>Transformed deployment pipeline by migrating from GitHub/Jenkins to OneDev, implementing
-                            ArgoCD for GitOps workflows</li>
-                        <li>Improved deployment frequency by 50% and reduced resource utilization by 20% through
-                            automated CI/CD pipelines with ArgoCD on K3s clusters</li>
-                        <li>Implemented Argo Rollouts with Istio for canary releases in production, integrating
-                            Prometheus and Kiali for monitoring and traffic visualization</li>
-                        <li>Authored build spec YAML files for OneDev, automating deployments by updating image tags in
-                            Helm values.yml</li>
-                    </ul>
-
-                    <div class="subsection-title">Security & Compliance</div>
-                    <ul>
-                        <li>Integrated DevSecOps tools (SonarQube, OWASP ZAP, Trivy) into CI/CD pipelines, collaborating
-                            with security teams on vulnerability remediation</li>
-                        <li>Implemented automated certificate lifecycle management using Let's Encrypt, eliminating
-                            manual renewal processes</li>
-                        <li>Configured Nginx and Caddy as reverse proxy, caching server, and SSL terminator for
-                            optimized performance</li>
-                        <li>Managed DNS via Route53 and GoDaddy with comprehensive SSL certificate management and
-                            automated renewals</li>
-                    </ul>
-
-                    <div class="subsection-title">Testing & Validation</div>
-                    <ul>
-                        <li>Conducted chaos engineering tests including end-to-end validation and load testing to ensure
-                            system resilience under failure scenarios</li>
-                        <li>Performed stress testing and failure scenario simulations to validate infrastructure
-                            robustness and auto-recovery capabilities</li>
-                    </ul>
-
-                    <div class="subsection-title">Operations & Leadership</div>
-                    <ul>
-                        <li>Provide 24/7 on-call support with rapid response to critical incidents, conducting thorough
-                            root cause analysis and implementing preventive measures</li>
-                        <li>Led cross-functional collaboration across development, security, and operations teams to
-                            deliver applications with zero major incidents</li>
-                        <li>Acted as primary point of contact during major incidents, resolving issues within SLAs using
-                            Plane.so ticketing system</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item card-hover">
-                    <div class="job-header">
-                        <div class="job-title">Cloud & DevOps Engineer (SRE)</div>
-                        <div class="company-info">
-                            <div class="company">zeb</div>
-                            <div class="date">Feb 2024 - Oct 2024</div>
-                        </div>
-                        <div class="location">On-site, Chennai, Tamil Nadu</div>
-                    </div>
-
-                    <div class="subsection-title">Mission-Critical Operations</div>
-                    <ul>
-                        <li>Managed AWS-based production infrastructure supporting thousands of retail stores globally,
-                            maintaining 99.9% availability SLA with zero major outages</li>
-                        <li>Executed ITIL-compliant change management processes across dev, qa, uat, perf, and prod
-                            environments, ensuring smooth releases and minimal disruption</li>
-                    </ul>
-
-                    <div class="subsection-title">Incident Management & Support</div>
-                    <ul>
-                        <li>Provided 24/7 on-call support with sub-15-minute response time for P1 incidents using
-                            distributed tracing and correlation IDs</li>
-                        <li>Resolved 90% of service tickets within SLA using ServiceNow and Jira, implementing long-term
-                            fixes to prevent recurring issues</li>
-                        <li>Reduced mean time to resolution (MTTR) by 20% through effective problem-solving and
-                            implementation of automated remediation scripts</li>
-                    </ul>
-
-                    <div class="subsection-title">System Migration & Modernization</div>
-                    <ul>
-                        <li>Contributed to large-scale migration from legacy systems to modern serverless architecture
-                            with zero downtime, successfully onboarding thousands of retail stores</li>
-                        <li>Supported CI/CD pipeline migration from Jenkins to GitLab, improving deployment efficiency
-                            and reducing manual intervention by 60%</li>
-                    </ul>
-
-                    <div class="subsection-title">Observability & Optimization</div>
-                    <ul>
-                        <li>Implemented comprehensive monitoring strategy using CloudWatch, Datadog, and Logz.io,
-                            enabling proactive incident response and system optimization</li>
-                        <li>Optimized AWS Lambda-based applications and implemented automated capacity planning,
-                            reducing cold start times by 40%</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item card-hover">
-                    <div class="job-header">
-                        <div class="job-title">Cloud Engineer (DevSecOps Specialist)</div>
-                        <div class="company-info">
-                            <div class="company">AVASOFT</div>
-                            <div class="date">Feb 2023 - Jan 2024</div>
-                        </div>
-                        <div class="location">On-site, Chennai, Tamil Nadu</div>
-                    </div>
-
-                    <ul>
-                        <li>Led 3-member DevSecOps team implementing security measures across internal NextGen products
-                        </li>
-                        <li>Developed security frameworks that reduced manual security assessment time by 60%, creating
-                            actionable remediation strategies aligned with compliance standards</li>
-                        <li>Integrated security scanning tools (SonarQube, Trivy, OWASP, Terrascan, ZapProxy) into CI/CD
-                            pipelines, automating vulnerability detection</li>
-                        <li>Established vulnerability management processes and automated security reporting,
-                            collaborating with cybersecurity teams for compliance alignment</li>
-                        <li>Conducted comprehensive research and POC development for Google Cloud Platform services,
-                            creating detailed documentation for organizational cloud adoption</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="section page-break">
-                <h2>Education</h2>
-                <div class="education-item">
-                    <div class="degree">Bachelor of Engineering in Electronics and Communication Engineering (ECE)</div>
-                    <div class="school">Dhirajlal Gandhi College of Technology, Salem | Anna University Chennai</div>
-                    <div class="date">Aug 2019 - Jul 2023 | CGPA: 8.2/10</div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Technical Skills</h2>
-                <div class="skills-container">
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Cloud Platforms</div>
-                        <div class="skill-items">AWS (Expert), Hetzner Cloud, Azure, Google Cloud Platform</div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Infrastructure as Code</div>
-                        <div class="skill-items">Terraform, Ansible, AWS CloudFormation</div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Container & Orchestration</div>
-                        <div class="skill-items">Kubernetes, Docker, Helm Charts, K3s, AWS EKS, AWS ECS, Istio (Ambient
-                            Mode)</div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">CI/CD Tools</div>
-                        <div class="skill-items">GitLab, GitHub Actions, OneDev, Jenkins, ArgoCD, Argo Rollouts, Azure
-                            DevOps</div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Observability Stack</div>
-                        <div class="skill-items">Prometheus, Grafana, Loki, Jaeger, Kiali, AlertManager, Blackbox
-                            Exporter, Sentry</div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Monitoring Tools</div>
-                        <div class="skill-items">CloudWatch, Datadog, Logz.io, OpenSearch, Fluentd</div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Incident Management</div>
-                        <div class="skill-items">Grafana OnCall, ServiceNow, Jira, Plane.so</div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Security Tools</div>
-                        <div class="skill-items">SonarQube, Trivy, Terrascan, OWASP Dependency Check, OWASP ZapProxy
-                        </div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Networking</div>
-                        <div class="skill-items">TCP/IP, DNS, VPC Design & Troubleshooting, Load Balancing</div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Web Servers & Proxies</div>
-                        <div class="skill-items">Nginx, Caddy, Reverse Proxy Configuration</div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Methodologies</div>
-                        <div class="skill-items">ITIL Principles, Agile, DevOps, SRE (SLIs/SLOs), GitOps, Chaos
-                            Engineering</div>
-                    </div>
-
-                    <div class="skill-category card-hover">
-                        <div class="skill-label">Additional Skills</div>
-                        <div class="skill-items">Certificate Lifecycle Management, Cost Optimization, 24/7 On-Call
-                            Support, Bash Scripting</div>
-                    </div>
-                </div>
-            </div>
+        <div class="exp-subsection">
+          <div class="exp-sub-title">☁ Infrastructure & Cloud</div>
+          <ul class="exp-bullets">
+            <li>Architected end-to-end UAT environment on <strong>AWS</strong> using <strong>EKS, CloudFront, ALB, and WAF</strong> with Terraform IaC; authored Helm charts, Dockerfiles, and Kubernetes manifests across isolated namespaces.</li>
+            <li>Achieved <strong>75% infrastructure cost reduction</strong> by migrating dev/QA workloads from AWS to <strong>Hetzner Cloud</strong> while maintaining full operational uptime via Kubernetes auto-scaling.</li>
+          </ul>
         </div>
+
+        <div class="exp-subsection">
+          <div class="exp-sub-title">📊 Observability & SRE</div>
+          <ul class="exp-bullets">
+            <li>Deployed full observability stack — <strong>Prometheus, Grafana, Loki, Jaeger, Kiali</strong> — across 50+ microservices; integrated <strong>AlertManager</strong> for intelligent incident routing.</li>
+            <li>Integrated <strong>Grafana OnCall</strong> reducing <strong>MTTA by 40%</strong>; designed RCA dashboards for rapid post-mortem analysis.</li>
+            <li>Established <strong>SLI/SLO-based monitoring</strong> with <strong>OpenSearch + Fluentd</strong>, reducing incident response time by <strong>25%</strong>.</li>
+            <li>Implemented <strong>Sentry</strong> for APM, <strong>Blackbox Exporter</strong> for synthetic uptime validation, and <strong>Istio Ambient</strong> service mesh for distributed tracing.</li>
+          </ul>
+        </div>
+
+        <div class="exp-subsection">
+          <div class="exp-sub-title">⚙ CI/CD & GitOps</div>
+          <ul class="exp-bullets">
+            <li>Migrated pipelines to <strong>OneDev + ArgoCD GitOps</strong>; improved deployment frequency by <strong>50%</strong> and reduced resource utilization by <strong>20%</strong> on K3s clusters.</li>
+            <li>Implemented <strong>Argo Rollouts</strong> with Istio for production <strong>canary releases</strong>; Prometheus and Kiali for traffic visualization.</li>
+            <li>Delivered end-to-end <strong>mobile CI/CD</strong>: Android keystore signing via <strong>Fastlane</strong>; iOS automated distribution to <strong>TestFlight</strong>.</li>
+            <li>Integrated automated test gates — <strong>Selenium</strong> (E2E), <strong>K6</strong> & <strong>JMeter</strong> (load/perf) — across microservices pipelines.</li>
+          </ul>
+        </div>
+
+        <div class="exp-subsection">
+          <div class="exp-sub-title">🤖 AI Infrastructure</div>
+          <ul class="exp-bullets">
+            <li>Provisioned <strong>PostgreSQL + pgvector</strong> to power <strong>RAG (Retrieval-Augmented Generation)</strong> pipelines for AI Agents, Insights Engine, and AI Chat services.</li>
+            <li>Managed infrastructure for LLM-backed agent services and multi-model AI workloads; procured <strong>OpenAI API</strong> keys and monitored token costs.</li>
+            <li>Built full-stack <strong>AIOps monitoring platform</strong> from scratch (Keycloak + Angular/Tailwind + Java/Spring Boot) deployed across 50+ Kubernetes microservices.</li>
+          </ul>
+        </div>
+
+        <div class="exp-subsection">
+          <div class="exp-sub-title">🛡 Security & Operations</div>
+          <ul class="exp-bullets">
+            <li>Integrated <strong>DevSecOps</strong> toolchain — <strong>SonarQube, OWASP ZAP, Trivy</strong> — into CI/CD; automated certificate lifecycle with <strong>Let's Encrypt</strong>.</li>
+            <li>Configured <strong>Nginx</strong> and <strong>Caddy</strong> as reverse proxy, SSL terminator; managed DNS via Route 53 and GoDaddy.</li>
+            <li>Conducted <strong>chaos engineering</strong> tests; provided <strong>24/7 on-call</strong> support as primary POC for P1 incidents via Plane.so — <strong>zero major incidents</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- zeb -->
+      <div class="exp-card fade-in">
+        <div class="exp-top">
+          <div class="exp-title">Cloud & DevOps Engineer (SRE)</div>
+          <div class="exp-badge">Feb 2024 – Oct 2024</div>
+        </div>
+        <div class="exp-meta">
+          <span class="exp-company">zeb</span>
+          <div class="exp-dot"></div>
+          <span class="exp-date">Feb 2024 – Oct 2024</span>
+          <div class="exp-dot"></div>
+          <span class="exp-loc">Chennai, On-site</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Managed <strong>AWS-based production infrastructure</strong> supporting thousands of retail stores globally, maintaining <strong>99.9% availability SLA</strong> with zero major outages.</li>
+          <li>Provided <strong>24/7 on-call support</strong> with <strong>sub-15-minute P1 response time</strong> using distributed tracing and correlation IDs.</li>
+          <li>Resolved <strong>90% of service tickets within SLA</strong> via ServiceNow and Jira; implemented automated remediation scripts reducing <strong>MTTR by 20%</strong>.</li>
+          <li>Executed <strong>ITIL-compliant change management</strong> across dev, QA, UAT, perf, and prod environments; contributed to large-scale legacy-to-<strong>serverless migration</strong> with zero downtime.</li>
+          <li>Supported CI/CD migration from <strong>Jenkins to GitLab</strong>, reducing manual intervention; implemented monitoring via <strong>CloudWatch, Datadog, and Logz.io</strong>.</li>
+          <li>Optimized <strong>AWS Lambda</strong> applications; implemented automated capacity planning to reduce cold start times.</li>
+        </ul>
+      </div>
+
+      <!-- AVASOFT -->
+      <div class="exp-card fade-in">
+        <div class="exp-top">
+          <div class="exp-title">Cloud Engineer — DevSecOps Specialist</div>
+          <div class="exp-badge">Feb 2023 – Jan 2024</div>
+        </div>
+        <div class="exp-meta">
+          <span class="exp-company">AVASOFT</span>
+          <div class="exp-dot"></div>
+          <span class="exp-date">Feb 2023 – Jan 2024</span>
+          <div class="exp-dot"></div>
+          <span class="exp-loc">Chennai, On-site</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Led a <strong>3-member DevSecOps team</strong> implementing security frameworks across internal NextGen products; reduced manual security assessment time by <strong>60%</strong>.</li>
+          <li>Integrated security scanning pipeline — <strong>SonarQube, Trivy, OWASP Dependency Check, ZapProxy, Terrascan</strong> — automating vulnerability detection with actionable remediation.</li>
+          <li>Established vulnerability management and automated security reporting in collaboration with cybersecurity teams for compliance alignment.</li>
+          <li>Conducted comprehensive <strong>GCP</strong> service research and POC development; authored detailed documentation accelerating organizational cloud adoption.</li>
+        </ul>
+      </div>
+
     </div>
+  </div>
+</section>
 
-    <script>
-        // Spotlight Effect
-        const spotlight = document.querySelector('.spotlight');
-        document.addEventListener('mousemove', (e) => {
-            spotlight.style.left = `${e.clientX}px`;
-            spotlight.style.top = `${e.clientY}px`;
-        });
+<div class="section-divider"></div>
 
-        function downloadPDF() {
-            const buttons = document.querySelector('.download-buttons');
-            buttons.style.display = 'none';
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">// tech stack</div>
+    <h2 class="section-title">Technical <em>Skills</em></h2>
 
-            setTimeout(() => {
-                window.print();
-                setTimeout(() => {
-                    buttons.style.display = 'flex';
-                }, 100);
-            }, 100);
-        }
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <div class="skill-cat">☁ Cloud Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">AWS (Expert)</span>
+          <span class="skill-tag">Hetzner Cloud</span>
+          <span class="skill-tag">GCP</span>
+          <span class="skill-tag">Azure</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">📐 Infrastructure as Code</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Terraform</span>
+          <span class="skill-tag">Ansible</span>
+          <span class="skill-tag">AWS CloudFormation</span>
+          <span class="skill-tag highlight">Helm Charts</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">🐳 Containers & Orchestration</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Kubernetes</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">K3s</span>
+          <span class="skill-tag">AWS EKS</span>
+          <span class="skill-tag">AWS ECS</span>
+          <span class="skill-tag highlight">Istio Ambient</span>
+          <span class="skill-tag">Argo Rollouts</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">🔄 CI/CD & GitOps</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">ArgoCD</span>
+          <span class="skill-tag">OneDev</span>
+          <span class="skill-tag">GitLab CI</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Jenkins</span>
+          <span class="skill-tag">Azure DevOps</span>
+          <span class="skill-tag">Fastlane</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">📈 Observability Stack</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Prometheus</span>
+          <span class="skill-tag highlight">Grafana</span>
+          <span class="skill-tag">Loki</span>
+          <span class="skill-tag">Jaeger</span>
+          <span class="skill-tag">Kiali</span>
+          <span class="skill-tag">AlertManager</span>
+          <span class="skill-tag">Blackbox Exporter</span>
+          <span class="skill-tag">Sentry</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">🔍 Monitoring & Logging</div>
+        <div class="skill-tags">
+          <span class="skill-tag">CloudWatch</span>
+          <span class="skill-tag">Datadog</span>
+          <span class="skill-tag">Logz.io</span>
+          <span class="skill-tag highlight">OpenSearch</span>
+          <span class="skill-tag">Fluentd</span>
+          <span class="skill-tag">Grafana OnCall</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">🛡 Security & DevSecOps</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SonarQube</span>
+          <span class="skill-tag">Trivy</span>
+          <span class="skill-tag">OWASP ZAP</span>
+          <span class="skill-tag">Terrascan</span>
+          <span class="skill-tag">WAF</span>
+          <span class="skill-tag">Istio mTLS</span>
+          <span class="skill-tag">Zero Trust</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">🧪 Testing Integration</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Selenium</span>
+          <span class="skill-tag">K6</span>
+          <span class="skill-tag">JMeter</span>
+          <span class="skill-tag">Chaos Engineering</span>
+          <span class="skill-tag">Load Testing</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">🤖 AI & ML Infrastructure</div>
+        <div class="skill-tags">
+          <span class="skill-tag ai">PostgreSQL + pgvector</span>
+          <span class="skill-tag ai">RAG Pipelines</span>
+          <span class="skill-tag ai">OpenAI API</span>
+          <span class="skill-tag ai">Vector DBs</span>
+          <span class="skill-tag ai">AI Agents Infra</span>
+          <span class="skill-tag ai">LLM Cost Monitoring</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">⚡ AI-Assisted Development (Vibe Coding)</div>
+        <div class="skill-tags">
+          <span class="skill-tag ai">Cursor</span>
+          <span class="skill-tag ai">GitHub Copilot</span>
+          <span class="skill-tag ai">Codex</span>
+          <span class="skill-tag ai">Antigravity</span>
+          <span class="skill-tag ai">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">💻 Languages & Frameworks</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Bash</span>
+          <span class="skill-tag">Java / Spring Boot</span>
+          <span class="skill-tag">Angular + Tailwind</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">.NET</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">🗄 Databases & Networking</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">AWS RDS</span>
+          <span class="skill-tag">Redis</span>
+          <span class="skill-tag">Keycloak</span>
+          <span class="skill-tag">VPC Design</span>
+          <span class="skill-tag">Route 53</span>
+          <span class="skill-tag">Nginx</span>
+          <span class="skill-tag">Caddy</span>
+        </div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-cat">📋 Methodology</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">SRE (SLIs/SLOs)</span>
+          <span class="skill-tag">GitOps</span>
+          <span class="skill-tag">ITIL</span>
+          <span class="skill-tag">Agile</span>
+          <span class="skill-tag">FinOps</span>
+          <span class="skill-tag">GreenOps</span>
+          <span class="skill-tag">Incident Management</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function downloadWord() {
-            const buttons = document.querySelector('.download-buttons');
-            buttons.style.display = 'none';
+<div class="section-divider"></div>
 
-            setTimeout(() => {
-                const content = `
-                    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-                    <head><meta charset='utf-8'><title>Jeeva Yovan E Resume</title></head>
-                    <body>${document.querySelector('.container').innerHTML}</body>
-                    </html>
-                `;
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">// what i've built</div>
+    <h2 class="section-title">Key <em>Projects</em></h2>
 
-                const blob = new Blob(['\ufeff', content], {
-                    type: 'application/msword'
-                });
+    <div class="projects-grid">
 
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = 'Jeeva_Yovan_E_Resume.doc';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
+      <!-- AIOps - FEATURED -->
+      <div class="project-card featured fade-in">
+        <div class="project-header">
+          <div class="project-icon">🤖</div>
+          <span class="project-period">2025 – Present</span>
+        </div>
+        <div class="project-title">AIOps Monitoring Platform</div>
+        <div class="project-subtitle">FOUNDER & BUILDER · FULL-STACK PRODUCT</div>
+        <div class="project-desc">
+          Building a production-grade <strong>AIOps platform from scratch</strong> to monitor 50+ Kubernetes microservices across B2B and B2C applications. Built with AI-assisted development (Cursor, Codex, Antigravity). Covers the full spectrum from observability to self-healing to security.
+        </div>
+        <div class="aiops-modules">
+          <div class="module-group">
+            <div class="module-group-title">🔭 Observe</div>
+            <div class="module-items">Metrics · Alerts<br/>Logs · Traces<br/>Events · RUM<br/>Synthetic</div>
+          </div>
+          <div class="module-group">
+            <div class="module-group-title">🧠 AI Insights</div>
+            <div class="module-items">AI Agents · Patterns<br/>Anomalies · RCA<br/>Predictions<br/>Alert Intel</div>
+          </div>
+          <div class="module-group">
+            <div class="module-group-title">⚡ Act</div>
+            <div class="module-items">Incident Hub<br/>Self-Healing<br/>Chaos Eng<br/>On-Call · Runbooks</div>
+          </div>
+          <div class="module-group">
+            <div class="module-group-title">💰 Optimize</div>
+            <div class="module-items">FinOps · Analytics<br/>Profiling<br/>GreenOps<br/>Biz Impact</div>
+          </div>
+          <div class="module-group">
+            <div class="module-group-title">🔒 Secure</div>
+            <div class="module-items">SOC Dashboard<br/>Runtime Alerts<br/>Zero Trust<br/>Vulnerabilities</div>
+          </div>
+          <div class="module-group">
+            <div class="module-group-title">🏗 Platform</div>
+            <div class="module-items">Service Catalog<br/>CI/CD Monitor<br/>Status Page<br/>Marketplace</div>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Keycloak</span>
+          <span class="project-tag">Angular 17</span>
+          <span class="project-tag">Tailwind CSS</span>
+          <span class="project-tag">Java / Spring Boot</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">Kubernetes</span>
+          <span class="project-tag">Cursor AI</span>
+          <span class="project-tag">Codex</span>
+        </div>
+      </div>
 
-                setTimeout(() => {
-                    buttons.style.display = 'flex';
-                }, 100);
-            }, 100);
-        }
-    </script>
+      <!-- CI/CD Modernization -->
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div class="project-icon">🔄</div>
+          <span class="project-period">Mar 2025 – Present</span>
+        </div>
+        <div class="project-title">CI/CD & Infrastructure Modernization</div>
+        <div class="project-subtitle">ZUBERA CLIENT · B2B & B2C PLATFORM</div>
+        <div class="project-desc">
+          Migrated CI/CD pipelines to <strong>OneDev + ArgoCD GitOps</strong>; automated deployments via Helm image tag updates on K3s. Transitioned sandbox to <strong>Hetzner Cloud saving 75%</strong> in costs. Delivered <strong>mobile CI/CD</strong> for Android (Fastlane) and iOS (TestFlight). Integrated <strong>Selenium, K6, JMeter</strong> as automated test gates.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">OneDev</span>
+          <span class="project-tag">ArgoCD</span>
+          <span class="project-tag">K3s</span>
+          <span class="project-tag">Helm</span>
+          <span class="project-tag">Fastlane</span>
+          <span class="project-tag">Selenium</span>
+          <span class="project-tag">K6</span>
+          <span class="project-tag">JMeter</span>
+          <span class="project-tag">Hetzner Cloud</span>
+        </div>
+      </div>
+
+      <!-- RAC/SRE -->
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div class="project-icon">☁</div>
+          <span class="project-period">Feb 2024 – Oct 2024</span>
+        </div>
+        <div class="project-title">DevOps & SRE — Global Retail Platform</div>
+        <div class="project-subtitle">RAC CLIENT (VIA ZEB) · AWS / GITLAB</div>
+        <div class="project-desc">
+          Designed and operated end-to-end deployment solutions on <strong>AWS</strong> for a global retail platform serving thousands of stores. Maintained <strong>99.9% SLA</strong>, managed DevOps tickets via <strong>ServiceNow and Jira</strong>, performed hotfixes, and provided <strong>24/7 P1 on-call support</strong> with zero major outages.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">AWS</span>
+          <span class="project-tag">GitLab CI</span>
+          <span class="project-tag">CloudWatch</span>
+          <span class="project-tag">Datadog</span>
+          <span class="project-tag">ServiceNow</span>
+          <span class="project-tag">ITIL</span>
+          <span class="project-tag">Lambda</span>
+        </div>
+      </div>
+
+      <!-- DevSecOps -->
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <div class="project-icon">🛡</div>
+          <span class="project-period">Mar 2023 – Jan 2024</span>
+        </div>
+        <div class="project-title">DevSecOps Pipeline — NextGen Products</div>
+        <div class="project-subtitle">AVASOFT · AWS / AZURE DEVOPS</div>
+        <div class="project-desc">
+          Led a 3-member team establishing security architecture for internal NextGen products. Reduced manual security assessment time by <strong>60%</strong> through automated scanning pipelines integrating <strong>SonarQube, Trivy, OWASP, Terrascan, ZapProxy</strong>. Provided developers compliance-aligned remediation and conducted <strong>GCP POCs</strong> for organizational cloud adoption.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">SonarQube</span>
+          <span class="project-tag">Trivy</span>
+          <span class="project-tag">OWASP ZAP</span>
+          <span class="project-tag">Terrascan</span>
+          <span class="project-tag">Azure DevOps</span>
+          <span class="project-tag">AWS</span>
+          <span class="project-tag">GCP</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-inner">
+    <div class="section-label">// impact & metrics</div>
+    <h2 class="section-title">Quantified <em>Impact</em></h2>
+    <div class="achievements-grid">
+      <div class="ach-card fade-in">
+        <div class="ach-num">75<span style="font-size:28px;color:var(--muted)">%</span></div>
+        <div class="ach-label"><strong>Cloud Cost Reduction</strong>Strategic AWS → Hetzner Cloud migration</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-num amber">40<span style="font-size:28px;color:var(--muted)">%</span></div>
+        <div class="ach-label"><strong>MTTA Reduction</strong>Grafana OnCall incident management</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-num green">50<span style="font-size:28px;color:var(--muted)">%</span></div>
+        <div class="ach-label"><strong>Deployment Frequency</strong>ArgoCD GitOps on K3s clusters</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-num cyan">99.9<span style="font-size:22px;color:var(--muted)">%</span></div>
+        <div class="ach-label"><strong>Uptime SLA</strong>Mission-critical production platform</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-num">20<span style="font-size:28px;color:var(--muted)">%</span></div>
+        <div class="ach-label"><strong>MTTR Reduction</strong>Automated remediation scripts</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-num amber">25<span style="font-size:28px;color:var(--muted)">%</span></div>
+        <div class="ach-label"><strong>Incident Response</strong>OpenSearch + Fluentd log insights</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-num green">60<span style="font-size:28px;color:var(--muted)">%</span></div>
+        <div class="ach-label"><strong>Security Assessment</strong>Automated DevSecOps pipeline</div>
+      </div>
+      <div class="ach-card fade-in">
+        <div class="ach-num cyan">90<span style="font-size:28px;color:var(--muted)">%</span></div>
+        <div class="ach-label"><strong>SLA Ticket Resolution</strong>ServiceNow & Jira within SLA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-label">// background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-card fade-in">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">B.E. — Electronics & Communication Engineering</div>
+        <div class="edu-school">Dhirajlal Gandhi College of Technology, Salem &nbsp;|&nbsp; Anna University, Chennai</div>
+        <div class="edu-meta">
+          <span class="edu-pill">Aug 2019 – Jul 2023</span>
+          <span class="edu-pill">CGPA: 8.21 / 10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-text fade-in">
+        <div class="section-label">// let's connect</div>
+        <h2 class="section-title">Open to <em>Opportunities</em></h2>
+        <p>Looking for Infrastructure, DevOps, Cloud, SRE, or Platform Engineering roles. I bring hands-on multi-cloud experience, a strong SRE mindset, and the rare ability to both operate and build — from Kubernetes clusters to full-stack AI-native applications.</p>
+        <div class="contact-links">
+          <a href="mailto:jeevayovan24@gmail.com" class="contact-link">
+            <div class="contact-link-icon">✉</div>
+            <div class="contact-link-text">
+              <strong>Email</strong>
+              <span>jeevayovan24@gmail.com</span>
+            </div>
+          </a>
+          <a href="tel:+916382597321" class="contact-link">
+            <div class="contact-link-icon">📱</div>
+            <div class="contact-link-text">
+              <strong>Phone</strong>
+              <span>+91 6382597321</span>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/jeevayovan-infrastructure" target="_blank" class="contact-link">
+            <div class="contact-link-icon">💼</div>
+            <div class="contact-link-text">
+              <strong>LinkedIn</strong>
+              <span>linkedin.com/in/jeevayovan-infrastructure</span>
+            </div>
+          </a>
+          <a class="contact-link" style="cursor:default;">
+            <div class="contact-link-icon">📍</div>
+            <div class="contact-link-text">
+              <strong>Location</strong>
+              <span>Salem, Tamil Nadu, India</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="terminal fade-in">
+        <div class="terminal-bar">
+          <div class="t-dot r"></div>
+          <div class="t-dot y"></div>
+          <div class="t-dot g"></div>
+          <span class="terminal-title">jeeva@infra ~ whoami</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-prompt">▶</span> <span class="t-cmd">cat profile.json</span></div>
+          <div class="t-output">{</div>
+          <div class="t-output">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Jeeva Yovan E"</span>,</div>
+          <div class="t-output">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Infrastructure &amp; DevOps"</span>,</div>
+          <div class="t-output">&nbsp;&nbsp;<span class="t-key">"experience"</span>: <span class="t-val">"3+ years"</span>,</div>
+          <div class="t-output">&nbsp;&nbsp;<span class="t-key">"cloud"</span>: <span class="t-val">["AWS", "Hetzner", "GCP", "Azure"]</span>,</div>
+          <div class="t-output">&nbsp;&nbsp;<span class="t-key">"k8s_clusters"</span>: <span class="t-val">"EKS + K3s"</span>,</div>
+          <div class="t-output">&nbsp;&nbsp;<span class="t-key">"uptime_sla"</span>: <span class="t-val">"99.9%"</span>,</div>
+          <div class="t-output">&nbsp;&nbsp;<span class="t-key">"cost_saved"</span>: <span class="t-val">"75%"</span>,</div>
+          <div class="t-output">&nbsp;&nbsp;<span class="t-key">"currently_building"</span>: <span class="t-val">"AIOps Platform"</span>,</div>
+          <div class="t-output">&nbsp;&nbsp;<span class="t-key">"open_to_work"</span>: <span style="color:var(--green)">true</span></div>
+          <div class="t-output">}</div>
+          <div style="margin-top:8px;"><span class="t-prompt">▶</span> <span class="t-cmd">ping jeevayovan24@gmail.com</span> <span class="t-cursor"></span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Jeeva Yovan E</span> · Infrastructure & DevOps Engineer</p>
+  <p>Built with <span>♥</span> · Salem, Tamil Nadu, India</p>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 60 * (Array.from(entry.target.parentElement?.children || []).indexOf(entry.target)));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Active nav link highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--blue)' : '';
+    });
+  });
+</script>
 </body>
-
 </html>
